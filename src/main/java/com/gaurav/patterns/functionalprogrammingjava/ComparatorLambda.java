@@ -18,8 +18,10 @@ public class ComparatorLambda {
         }
     };
 
+
     //lambda expression implementation of the Comparator interface.
     Comparator<String> comparatorLambda = (o1,o2) -> Integer.compare(o1.length(),o2.length());
+
 
     {
         List<String> list = Arrays.asList("*","****","**","*********","******");
@@ -28,6 +30,7 @@ public class ComparatorLambda {
         for (String l :list) {
             System.out.println(l);
         }
+
     }
 
 
