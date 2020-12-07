@@ -3,7 +3,6 @@ package com.gaurav.patterns.functionalprogrammingjava;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,11 +21,10 @@ public class ComparatorLambda {
     //lambda expression implementation of the Comparator interface.
     Comparator<String> comparatorLambda = (o1,o2) -> Integer.compare(o1.length(),o2.length());
 
-
     {
-        List<String> list = Arrays.asList("*","****","**","*********","******");
+        List<String> list = Arrays.asList("$","$$$","$$","$$$$$","$$$$");
         //Collections.sort(list,comparator);
-        Collections.sort(list,comparatorLambda);
+        list.sort(comparatorLambda);
         for (String l :list) {
             System.out.println(l);
         }
