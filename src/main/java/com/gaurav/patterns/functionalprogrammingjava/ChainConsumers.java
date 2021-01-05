@@ -10,19 +10,17 @@ import java.util.function.Consumer;
 @Service
 public class ChainConsumers {
 
-    List<String> strings = Arrays.asList("******", "*","*****","**","*********");
-    List<String> result = new ArrayList();
-    Consumer<String> print1 = s -> System.out.println(s);
-    Consumer<String> print2 = System.out::println;
-    Consumer<String> addToResult = s -> result.add(s.replace("*","5").concat("#"));
+    List<? extends String> strings = Arrays.asList("******", "*","*****","**","*********");
+    List<String> result = new ArrayList<>();
 
+    Consumer<String> printLambda = s -> System.out.println("Printing strings from the list : " + s);
+    Consumer<String> printMethodReference = System.out::println;
+    Consumer<String> addToResultLambda = s ->result.add(s.replace("*","#"));
 
     {
-        //strings.forEach(c1);
-        strings.forEach(print1.andThen(addToResult));
-        result.forEach(System.out::println);
-
-
+        strings.forEach(printLambda.andThen(addToResultLambda));
+        System.out.println("printing from result List now  ....");
+        result.forEach(printMethodReference);
     }
 
 

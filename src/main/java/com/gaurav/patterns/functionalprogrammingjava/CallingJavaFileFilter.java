@@ -1,7 +1,6 @@
 package com.gaurav.patterns.functionalprogrammingjava;
 
 import org.springframework.stereotype.Service;
-
 import java.io.File;
 import java.io.FileFilter;
 
@@ -10,10 +9,10 @@ public class CallingJavaFileFilter {
 
     private File dir = new File("/Users/gjain19/Desktop/repos/java-8-whats-new/01/demos/src/org/paumard");
 
-    //First way calling the FileFilter interface with concrete class.
-
-    private FileFilter preLambdaConcreteJavaFileFilter  = new PreLambdaConcreteJavaFileFilter();
-    private File[] fileList1 = dir.listFiles(preLambdaConcreteJavaFileFilter);
+    //1. using the concrete class implementation of the functional interface.
+    //private FileFilter preLambdaConcreteClassFileFilter  = new PreLambdaConcreteClassFileFilter();
+    //private File[] fileList1 = dir.listFiles(preLambdaConcreteClassFileFilter);
+    private File[] fileList1 = dir.listFiles(new PreLambdaConcreteClassFileFilter());
 
     {
         for (File f : fileList1) {
@@ -22,15 +21,21 @@ public class CallingJavaFileFilter {
     }
 
 
-    //Second way calling and inline implementing the FileFilter interface with Anonymous class implementation
-
-    private FileFilter preLambdaAnonymousJavaFileFilter = new FileFilter() {
+    //2. using the inline Anonymous class implementation of the FileFilter interfaces.
+    /*private FileFilter preLambdaAnonymousClassFileFilter = new FileFilter() {
         @Override
         public boolean accept(File pathname) {
             return pathname.getName().endsWith(".java");
         }
     };
-    private File[] fileList2 = dir.listFiles(preLambdaAnonymousJavaFileFilter);
+    private File[] fileList2 = dir.listFiles(preLambdaAnonymousClassFileFilter);
+    */
+    private File[] fileList2 = dir.listFiles(new FileFilter() {
+        @Override
+        public boolean accept(File pathname) {
+            return pathname.getName().endsWith(".java");
+        }
+    });
 
     {
         for (File f : fileList2) {
@@ -38,10 +43,14 @@ public class CallingJavaFileFilter {
         }
     }
 
-    //Third way calling/implementing inline with a Lambda expression.
+    //3.using the lambda expression, implementing the FileFilter interface.
+    //  lambda expression is another way of writing the Anonymous class implementation of a Functional interface.
+    /*
+    private FileFilter FileFilterLambda = (File pathname) -> pathname.getName().endsWith(".java");
+    private File[] fileList3 = dir.listFiles(FileFilterLambda);
+     */
 
-    private FileFilter JavaFileFilterLambda = (File pathname) -> pathname.getName().endsWith(".java");
-    private File[] fileList3 = dir.listFiles(JavaFileFilterLambda);
+    private File[] fileList3 = dir.listFiles((File pathname) -> pathname.getName().endsWith(".java"));
 
     {
         for (File f : fileList3) {
