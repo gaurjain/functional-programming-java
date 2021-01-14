@@ -43,7 +43,7 @@ public class CallingJavaFileFilter {
         }
     }
 
-    //3.using the lambda expression, implementing the FileFilter interface.
+    //3.using the lambda expression, implementing the FileFilter interface. Compare with #2 for code cleaning value.
     //  lambda expression is another way of writing the Anonymous class implementation of a Functional interface.
     /*
     private FileFilter FileFilterLambda = (File pathname) -> pathname.getName().endsWith(".java");
