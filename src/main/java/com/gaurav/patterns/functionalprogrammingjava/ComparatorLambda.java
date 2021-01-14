@@ -22,11 +22,11 @@ public class ComparatorLambda {
     //lambda expression implementation of the Comparator interface.
     Comparator<String> comparatorLambda = (o1,o2) -> Integer.compare(o1.length(),o2.length());
 
-
     {
-        List<String> list = Arrays.asList("*","****","**","*********","******");
-        //Collections.sort(list,comparator);
-        Collections.sort(list,comparatorLambda);
+        List<String> list = Arrays.asList("9","999","99","99999","999");
+        Collections.sort(list,comparator); // call algorithm to sort the "list" collection using the anonymous class object of the type "Comparator" interface.
+        list.sort(comparatorLambda); //method to sort the list using the implementation of the "comparatorLambda" .
+
         for (String l :list) {
             System.out.println(l);
         }
