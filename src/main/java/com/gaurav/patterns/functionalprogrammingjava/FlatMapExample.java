@@ -34,12 +34,12 @@ public class FlatMapExample {
                 // which applies the operation on element of the stream and
                 // returns an object as per function definition,
                 // and map operations returns a stream-of-object.
-                .map(flatMapper)
+                //.map(flatMapper)
                 // takes a function lambda expression
                 // which applies the operation on element of the stream and
                 // returns a stream object as per function definition,
                 // and map operation returns a stream-of-stream object with 3 stream-elements.
-                //.flatMap(flatMapper)
+                .flatMap(flatMapper)
                 //for Flattening the stream. takes a function lambda expression,
                 // which returns a stream object as per function definition,
                 // and flatmap operation flattens it to return
